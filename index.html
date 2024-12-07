@@ -1,133 +1,288 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900");
+html {
+  display: grid;
+  min-height: 100%;
+}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Happy Birthday!!! :)</title>
-  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-  <link rel="stylesheet" href="style/style.css">
-</head>
+body {
+  display: grid;
+  background: #183059;
+}
 
-<body>
-  <div class="container">
-    <div class="one">
-      <h1 class="one">
-        <span data-node-name="greeting">Hey</span>
-        <span data-node-name="name">Lydia</span>
-      </h1>
-      <p class="two" data-node-name="greetingText">I really like your name btw!</p>
+.container {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  width: 650px;
+  height: 480px;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  margin-top: 2em;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #F6F4F3;
+}
+
+#timer {
+  color: #F6F4F3;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Lato", sans-serif;
+  font-size: 0.7em;
+  letter-spacing: 5px;
+  margin-top: 25%;
+}
+
+.days, .hours, .minutes, .seconds {
+  display: inline-block;
+  padding: 20px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.days {
+  background: #EF2F3C;
+}
+
+.hours {
+  background: #F6F4F3;
+  color: #183059;
+}
+
+.minutes {
+  background: #276FBF;
+}
+
+.seconds {
+  background: #F0A202;
+}
+.numbers {
+  font-family: "Montserrat", sans-serif;
+  color: #183059;
+  font-size: 4em;
+}
+
+.white {
+  position: absolute;
+  background: #F6F4F3;
+  height: 85px;
+  width: 75px;
+  left: 30%;
+  top: 2%;
+}
+.white .triangle {
+  border-bottom: 14px solid #F6F4F3;
+}
+.white .string {
+  background: #F6F4F3;
+  border: 1px solid #F6F4F3;
+}
+
+.red {
+  position: absolute;
+  background: #EF2F3C;
+  left: 18%;
+  top: 9%;
+  height: 65px;
+  width: 70px;
+}
+.red .triangle {
+  border-bottom: 14px solid #EF2F3C;
+}
+.red .string {
+  background: #EF2F3C;
+  border: 1px solid #EF2F3C;
+}
+
+.blue {
+  position: absolute;
+  background: #276FBF;
+  height: 80px;
+  width: 80px;
+  left: 60%;
+  top: 5%;
+}
+.blue .triangle {
+  border-bottom: 14px solid #276FBF;
+}
+.blue .string {
+  background: #276FBF;
+  border: 1px solid #276FBF;
+}
+
+.balloon {
+  border: 1px solid #000;
+  border-radius: 50% 50% 50% 50%/40% 40% 60% 60%;
+  z-index: 2;
+}
+
+.eye {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 40%;
+  left: 22%;
+  background: #000;
+  border-radius: 50%;
+}
+.eye:after {
+  content: "";
+  left: 35px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+}
+
+.mouth {
+  position: absolute;
+  top: 45%;
+  left: 43%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.happy {
+  border: 2px solid;
+  border-color: transparent #000 #000 transparent;
+  transform: rotate(45deg);
+}
+
+.triangle {
+  position: absolute;
+  left: 40%;
+  bottom: -10%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.string {
+  position: absolute;
+  height: 70px;
+  width: 1px;
+  left: 48%;
+  top: 100%;
+  z-index: -1;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  background: #F6F4F3;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star-red {
+  width: 30px;
+  height: 30px;
+  margin-left: 51px;
+  margin-top: -5px;
+  background: #EF2F3C;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  text-transform: uppercase;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 0.7em;
+}
+footer p {
+  letter-spacing: 3px;
+  color: #EF2F3C;
+}
+footer a {
+  color: #F6F4F3;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #276FBF;
+}
+</style>
+<div class="container">
+    <div class="balloon white">
+      <div class="star-red"></div>
+    <div class="face">
+      <div class="eye"></div>
+      <div class="mouth happy"></div>
     </div>
-    <div class="three">
-      <p data-node-name="text1">It's your birthday!!! :D</p>
-    </div>
-    <div class="four">
-      <div class="text-box">
-        <p class="hbd-chatbox" data-node-name="textInChatBox">Happy birthday to you!! Yeee! Many many happy blah...</p>
-        <p class="fake-btn" data-node-name="sendButtonLabel">Send</p>
-      </div>
-    </div>
-    <div class="five">
-      <p class="idea-1" data-node-name="text2">That's what I was going to do.</p>
-      <p class="idea-2" data-node-name="text3">But then I stopped.</p>
-      <p class="idea-3">
-        <span data-node-name="text4">I realised, I wanted to do something</span>
-        <strong data-node-name="text4Adjective">special</strong>.</p>
-      <p class="idea-4" data-node-name="text5Entry">Because,</p>
-      <p class="idea-5">
-        <span data-node-name="text5Content">You are Special</span>
-        <span class="smiley" data-node-name="smiley">:)</span>
-      </p>
-      <p class="idea-6">
-        <span data-node-name="bigTextPart1">S</span>
-        <span data-node-name="bigTextPart2">O</span>
-      </p>
-    </div>
-    <div class="six">
-      <img src="img/lydia2.png" alt="" class="lydia-dp" data-node-name="imagePath">
-      <img src="img/hat.svg" alt="" class="hat">
-      <div class="wish">
-        <h3 class="wish-hbd" data-node-name="wishHeading">Happy Birthday!</h3>
-        <h5 data-node-name="wishText">May the js.prototypes always be with you! ;)</h5>
-      </div>
-    </div>
-    <div class="seven">
-      <div class="baloons">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon2.svg" alt="">
-        <img src="img/ballon1.svg" alt="">
-        <img src="img/ballon3.svg" alt="">
-      </div>
-    </div>
-    <div class="eight">
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" />
-      </svg>
-    </div>
-    <div class="nine">
-      <p data-node-name="outroText">Okay, now come back and tell me if you liked it.</p>
-      <p id="replay" data-node-name="replayText">Or click, if you want to watch it again.</p>
-      <p class="last-smile" data-node-name="outroSmiley">:)</p>
-    </div>
+    <div class="triangle"></div>
+    <div class="string"></div>
   </div>
-</body>
+  
+  <div class="balloon red">
+    <div class="star"></div>
+    <div class="face">
+      <div class="eye"></div>
+      <div class="mouth happy"></div>
+    </div>
+    <div class="triangle"></div>
+    <div class="string"></div>
+  </div>
+  
+  <div class="balloon blue">
+    <div class="star"></div>
+    <div class="face">
+      <div class="eye"></div>
+      <div class="mouth happy"></div>
+    </div>
+    <div class="triangle"></div>
+    <div class="string"></div>
+  </div>
+    <div id="timer"></div>
+    <h1>Hari Ulang Tahun</h1>
+  </div>
+  <script>
+    const year = new Date().getFullYear();
+const birthdayDate = new Date(year, 11, 7).getTime();
+const month = new Date().getMonth();
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-<script type="application/javascript" src="script/main.js"></script>
+// countdown
+let timer = setInterval(function() {
 
-</html>
+  // get today's date
+  const today = new Date().getTime();
+
+  // get the difference
+  let diff = birthdayDate - today;
+
+  if (diff <= 0) {
+    clearInterval(timer);
+    window.location.href = "ucapan.html";
+  }
+ 
+
+  // math
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // display
+  document.getElementById("timer").innerHTML =
+    "<div class=\"days\"> \
+  <div class=\"numbers\">" + days + "</div>days</div> \
+<div class=\"hours\"> \
+  <div class=\"numbers\">" + hours + "</div>hours</div> \
+<div class=\"minutes\"> \
+  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+<div class=\"seconds\"> \
+  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+</div>";
+
+}, 1000);
+  </script>
